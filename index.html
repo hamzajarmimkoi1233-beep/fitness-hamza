@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fitness Hamza Working Club (FCH)</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
+body { background:#f5f5f5; color:#222; }
+
+/* Navbar */
+header { background:#ffffff; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 8px rgba(0,0,0,0.1); position:sticky; top:0; z-index:1000; }
+header h1 { color:#0077cc; font-size:24px; }
+nav a { color:#0077cc; margin:0 10px; text-decoration:none; font-weight:bold; cursor:pointer; transition:0.3s; }
+nav a:hover { color:#ff9900; }
+select { margin-left:20px; padding:5px; border-radius:5px; border:1px solid #ccc; }
+
+/* Sections */
+section { padding:50px 20px; max-width:1200px; margin:auto; display:none; opacity:0; transform: translateY(30px); transition:all 0.8s ease; }
+section.active { display:block; opacity:1; transform: translateY(0); }
+section h2 { text-align:center; color:#0077cc; font-size:36px; margin-bottom:30px; }
+section p, section li { font-size:16px; line-height:1.6; color:#333; margin-bottom:10px; }
+
+/* Hero */
+.hero { background: url('https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') center/cover no-repeat; height:500px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+.hero h2 { font-size:48px; color:#ffffff; margin-bottom:20px; }
+.hero p { font-size:24px; color:#ffffff; margin-bottom:20px; }
+
+/* Buttons */
+.btn { background-color:#0077cc; color:white; padding:12px 25px; font-size:16px; text-decoration:none; border-radius:5px; margin:5px; cursor:pointer; transition:0.3s; }
+.btn:hover { background-color:#ff9900; transform:scale(1.05); }
+
+/* Cards */
+.cards { display:flex; flex-wrap:wrap; justify-content:space-around; margin-top:30px; }
+.card { background:#ffffff; border-radius:10px; width:300px; margin:15px; padding:20px; text-align:center; cursor:pointer; transition: transform 0.5s, box-shadow 0.5s; }
+.card:hover { transform:scale(1.05); box-shadow:0 10px 20px rgba(0,119,204,0.3); }
+.card img { width:100%; height:200px; object-fit:cover; border-radius:10px; margin-bottom:15px; }
+.card h3 { color:#0077cc; margin-bottom:10px; }
+.card p { color:#555; font-size:14px; }
+
+/* Service Images inside Pages */
+.service-img { width:100%; border-radius:10px; margin-top:15px; transition: transform 0.5s, box-shadow 0.5s; cursor:pointer; }
+.service-img:hover { transform:scale(1.05); box-shadow:0 10px 20px rgba(0,119,204,0.3); }
+
+/* Tips List */
+ul { margin-left:20px; margin-bottom:20px; }
+ul li { margin-bottom:10px; }
+
+/* Footer */
+footer { background:#ffffff; color:#222; text-align:center; padding:20px; margin-top:50px; box-shadow:0 -2px 8px rgba(0,0,0,0.1); }
+footer a { color:#0077cc; text-decoration:none; margin:0 10px; }
+
+/* Responsive */
+@media(max-width:768px){ .cards{flex-direction:column; align-items:center;} .hero h2{font-size:36px;} .hero p{font-size:18px;} header{flex-direction:column;} }
+</style>
+</head>
+<body>
+
+<header>
+<h1>Fitness Hamza Working Club (FCH)</h1>
+<nav>
+    <a onclick="showPage('home')">Home</a>
+    <a onclick="showPage('about')">About</a>
+    <a onclick="showPage('services')">Services</a>
+    <a onclick="showPage('contact')">Contact</a>
+    <select id="language" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="ar">العربية</option>
+    </select>
+</nav>
+</header>
+
+<!-- Home -->
+<section id="home" class="active">
+<div class="hero">
+<h2 id="hero-title">Transform Your Body, Change Your Life</h2>
+<p id="hero-text">Personal training for men & women. Build muscles or lose weight safely!</p>
+<a class="btn" onclick="showPage('services')">Explore Services</a>
+<a class="btn" onclick="showPage('contact')">Contact Me</a>
+</div>
+</section>
+
+<!-- About -->
+<section id="about">
+<h2 id="about-title">About Me</h2>
+<p id="about-text">Hi! I'm Hamza, a personal trainer with a passion for fitness and helping people transform their lives. My journey began in childhood, when I was small and weak, dreaming to become strong and healthy. Over the years, I dedicated myself to learning about exercise, nutrition, and wellness. Today, I combine all my experience to guide men and women safely towards their fitness goals, whether it's gaining muscle, losing weight, or improving overall health.</p>
+</section>
+
+<!-- Services -->
+<section id="services">
+<h2 id="services-title">Services</h2>
+<div class="cards">
+    <div class="card" onclick="showPage('personal-training')">
+        <img src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300" alt="Personal Training">
+        <h3 id="service1-title">Personal Training</h3>
+        <p id="service1-text">One-on-one sessions tailored to your goals, fitness level, and schedule.</p>
+    </div>
+    <div class="card" onclick="showPage('online-coaching')">
+        <img src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300" alt="Online Coaching">
+        <h3 id="service2-title">Online Coaching</h3>
+        <p id="service2-text">Structured online programs with guidance via PC and full support.</p>
+    </div>
+    <div class="card" onclick="showPage('muscle-gain')">
+        <img src="https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=200&w=300" alt="Muscle Gain">
+        <h3 id="service3-title">Muscle Gain</h3>
+        <p id="service3-text">Programs to increase muscle mass and strength safely.</p>
+    </div>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+<h2 id="contact-title">Contact Me</h2>
+<p id="contact-text">Reach me directly via WhatsApp or email:</p>
+<p id="contact-whatsapp">WhatsApp: <a href="https://wa.me/212644677498" target="_blank">+212 644 677 498</a></p>
+<p id="contact-email">Email: <a href="mailto:hamzabenjarmim@gmail.com">hamzabenjarmim@gmail.com</a></p>
+</section>
+
+<!-- Personal Training -->
+<section id="personal-training">
+<h2 id="pt-title">Personal Training</h2>
+<p id="pt-text">Tailored sessions for your fitness goals including strength training, cardio, flexibility, and nutrition guidance.</p>
+<ul id="pt-tips">
+<li>One-on-one personalized training plan</li>
+<li>Strength and endurance exercises</li>
+<li>Cardio sessions for fat burning</li>
+<li>Flexibility and mobility improvement</li>
+<li>Nutrition tips and meal planning</li>
+</ul>
+<img src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=400&w=800" alt="Personal Training Image" class="service-img">
+<a class="btn" onclick="showPage('services')">Back to Services</a>
+</section>
+
+<!-- Online Coaching -->
+<section id="online-coaching">
+<h2 id="oc-title">Online Coaching</h2>
+<p id="oc-text">Work from home with structured online programs, live guidance via PC, and full support to reach your goals safely.</p>
+<ul id="oc-tips">
+<li>Live video coaching sessions</li>
+<li>Personalized online training plans</li>
+<li>Progress tracking and feedback</li>
+<li>Nutrition guidance remotely</li>
+<li>Flexible schedule to fit your lifestyle</li>
+</ul>
+<img src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=400&w=800" alt="Online Coaching Image" class="service-img">
+<a class="btn" onclick="showPage('services')">Back to Services</a>
+</section>
+
+<!-- Muscle Gain -->
+<section id="muscle-gain">
+<h2 id="mg-title">Muscle Gain</h2>
+<p id="mg-text">Structured programs to help you build muscle, gain strength, and improve overall fitness.</p>
+<ul id="mg-tips">
+<li>Weightlifting programs for all levels</li>
+<li>Progressive overload techniques</li>
+<li>High-protein diet tips</li>
+<li>Recovery and rest guidance</li>
+<li>Monitoring growth and performance</li>
+</ul>
+<img src="https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=400&w=800" alt="Muscle Gain Image" class="service-img">
+<a class="btn" onclick="showPage('services')">Back to Services</a>
+</section>
+
+<footer>
+<p>&copy; 2026 Fitness Hamza Working Club (FCH). All rights reserved.</p>
+<p><a href="https://wa.me/212644677498" target="_blank">WhatsApp</a> | <a href="mailto:hamzabenjarmim@gmail.com">Email</a></p>
+</footer>
+
+<script>
+// Page switch
+function showPage(pageId){
+    const pages = document.querySelectorAll('section');
+    pages.forEach(p=>{ p.style.display='none'; p.style.opacity=0; p.style.transform='translateY(30px)'; });
+    const active = document.getElementById(pageId);
+    active.style.display='block';
+    setTimeout(()=>{ active.style.opacity=1; active.style.transform='translateY(0)'; },50);
+    window.scrollTo(0,0);
+}
+
+// Translations
+const translations = {
+en:{
+'hero-title':'Transform Your Body, Change Your Life',
+'hero-text':'Personal training for men & women. Build muscles or lose weight safely!',
+'about-title':'About Me',
+'about-text':'Hi! I\'m Hamza, a personal trainer with a passion for fitness and helping people transform their lives. My journey began in childhood, when I was small and weak, dreaming to become strong and healthy. Over the years, I dedicated myself to learning about exercise, nutrition, and wellness. Today, I combine all my experience to guide men and women safely towards their fitness goals, whether it\'s gaining muscle, losing weight, or improving overall health.',
+'services-title':'Services',
+'service1-title':'Personal Training','service1-text':'One-on-one sessions tailored to your goals, fitness level, and schedule.',
+'service2-title':'Online Coaching','service2-text':'Structured online programs with guidance via PC and full support.',
+'service3-title':'Muscle Gain','service3-text':'Programs to increase muscle mass and strength safely.',
+'contact-title':'Contact Me','contact-text':'Reach me directly via WhatsApp or email:',
+'pt-title':'Personal Training','pt-text':'Tailored sessions for your fitness goals including strength training, cardio, flexibility, and nutrition guidance.','pt-tips':['One-on-one personalized training plan','Strength and endurance exercises','Cardio sessions for fat burning','Flexibility and mobility improvement','Nutrition tips and meal planning'],
+'oc-title':'Online Coaching','oc-text':'Work from home with structured online programs, live guidance via PC, and full support to reach your goals safely.','oc-tips':['Live video coaching sessions','Personalized online training plans','Progress tracking and feedback','Nutrition guidance remotely','Flexible schedule to fit your lifestyle'],
+'mg-title':'Muscle Gain','mg-text':'Structured programs to help you build muscle, gain strength, and improve overall fitness.','mg-tips':['Weightlifting programs for all levels','Progressive overload techniques','High-protein diet tips','Recovery and rest guidance','Monitoring growth and performance']
+},
+es:{
+'hero-title':'Transforma Tu Cuerpo, Cambia Tu Vida',
+'hero-text':'Entrenamiento personal para hombres y mujeres. ¡Construye músculos o pierde peso de manera segura!',
+'about-title':'Sobre Mí',
+'about-text':'¡Hola! Soy Hamza, un entrenador personal apasionado por el fitness y ayudar a las personas a transformar sus vidas. Mi historia comenzó en la infancia, cuando era pequeño y débil, soñando con ser fuerte y saludable. Con los años, me dediqué a aprender sobre ejercicio, nutrición y bienestar. Hoy, combino toda mi experiencia para guiar a hombres y mujeres de manera segura hacia sus objetivos de fitness, ya sea ganar músculo, perder peso o mejorar la salud general.',
+'services-title':'Servicios',
+'service1-title':'Entrenamiento Personal','service1-text':'Sesiones individuales adaptadas a tus metas, nivel de condición física y horario.',
+'service2-title':'Coaching Online','service2-text':'Programas estructurados con orientación vía PC y soporte completo.',
+'service3-title':'Ganancia de Músculo','service3-text':'Programas para aumentar la masa muscular y la fuerza de manera segura.',
+'contact-title':'Contáctame','contact-text':'Comunícate directamente a través de WhatsApp o correo electrónico:',
+'pt-title':'Entrenamiento Personal','pt-text':'Sesiones adaptadas a tus objetivos de fitness incluyendo fuerza, cardio, flexibilidad y nutrición.','pt-tips':['Plan de entrenamiento personalizado','Ejercicios de fuerza y resistencia','Sesiones de cardio para quemar grasa','Mejora de la flexibilidad y movilidad','Consejos de nutrición y planificación de comidas'],
+'oc-title':'Coaching Online','oc-text':'Trabaja desde casa con programas en línea estructurados, orientación en vivo vía PC y soporte completo.','oc-tips':['Sesiones de coaching en vivo','Planes de entrenamiento personalizados','Seguimiento del progreso y feedback','Orientación nutricional a distancia','Horario flexible según tu estilo de vida'],
+'mg-title':'Ganancia de Músculo','mg-text':'Programas estructurados para ayudarte a ganar músculo, fuerza y mejorar la forma física.','mg-tips':['Programas de levantamiento de pesas para todos los niveles','Técnicas de sobrecarga progresiva','Consejos de dieta rica en proteínas','Guía de recuperación y descanso','Monitoreo del crecimiento y rendimiento']
+},
+ar:{
+'hero-title':'حوّل جسمك، غيّر حياتك','hero-text':'تدريب شخصي للنساء والرجال. بناء العضلات أو فقدان الوزن بطريقة آمنة!',
+'about-title':'عني',
+'about-text':'مرحباً! أنا حمزة، مدرب شخصي بشغف كبير بالرياضة ومساعدة الناس على تغيير حياتهم. بدأت رحلتي منذ الطفولة، عندما كنت ضعيفاً وصغيراً، وكنت أحلم بأن أصبح قوياً وصحياً. على مر السنين، كرّست نفسي لتعلم التمارين، التغذية، والصحة العامة. اليوم، أستفيد من كل خبرتي لأرشد الرجال والنساء بطريقة آمنة نحو تحقيق أهدافهم الرياضية، سواءً لبناء العضلات، فقدان الوزن، أو تحسين الصحة العامة.',
+'services-title':'الخدمات',
+'service1-title':'تدريب شخصي','service1-text':'جلسات فردية مخصصة لأهدافك، مستوى لياقتك، وجدولك.',
+'service2-title':'التدريب أونلاين','service2-text':'برامج منظمة مع إرشاد عبر الكمبيوتر ودعم كامل.',
+'service3-title':'زيادة العضلات','service3-text':'برامج لزيادة الكتلة العضلية والقوة بطريقة آمنة.',
+'contact-title':'تواصل معي','contact-text':'تواصل معي مباشرة عبر واتساب أو البريد الإلكتروني:',
+'pt-title':'تدريب شخصي','pt-text':'جلسات فردية لأهدافك تشمل القوة، الكارديو، المرونة والإرشادات الغذائية.','pt-tips':['جلسة تدريب شخصية مخصصة','تمارين قوة وتحمل','جلسات كارديو لحرق الدهون','تحسين المرونة والحركة','نصائح غذائية وخطط وجبات'],
+'oc-title':'التدريب أونلاين','oc-text':'العمل من المنزل مع برامج منظمة، إرشاد مباشر عبر الكمبيوتر ودعم كامل للوصول لهدفك.','oc-tips':['جلسات تدريب مباشر','خطط تدريب شخصية','متابعة التقدم والتعليقات','إرشاد غذائي عن بعد','جدولة مرنة لتناسب أسلوب حياتك'],
+'mg-title':'زيادة العضلات','mg-text':'برامج منظمة لمساعدتك على بناء العضلات وزيادة القوة وتحسين اللياقة.','mg-tips':['برامج رفع الأثقال لجميع المستويات','تقنيات زيادة التحميل التدريجي','نصائح غذائية عالية البروتين','إرشادات التعافي والراحة','مراقبة النمو والأداء']
+}
+};
+
+function changeLanguage(lang){
+    for(const id in translations[lang]){
+        const el = document.getElementById(id);
+        if(el){
+            if(Array.isArray(translations[lang][id])){
+                let ulContent = '';
+                translations[lang][id].forEach(item=>{ ulContent += `<li>${item}</li>`; });
+                el.innerHTML = ulContent;
+            }else{
+                el.innerHTML = translations[lang][id];
+            }
+        }
+    }
+}
+</script>
+
+</body>
+</html>
